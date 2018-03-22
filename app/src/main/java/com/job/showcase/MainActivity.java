@@ -8,6 +8,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.job.showcase.adapter.PagerViewAdapter;
 import com.job.showcase.userManagement.LoginActivity;
 
@@ -26,6 +28,17 @@ public class MainActivity extends AppCompatActivity {
     ViewPager mViewPager;
 
     PagerViewAdapter pagerViewAdapter;
+    FirebaseAuth mAuth;
+
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        if (currentUser == null){
+            sendToLogin();
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,10 +46,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         ButterKnife.bind(this);
-
-        //TODO remove this intent
-        Intent intent = new Intent(this, LoginActivity.class);
-        startActivity(intent);
 
         pagerViewAdapter = new PagerViewAdapter(getSupportFragmentManager());
         mViewPager.setAdapter(pagerViewAdapter);
@@ -61,6 +70,12 @@ public class MainActivity extends AppCompatActivity {
                 mViewPager.setCurrentItem(2);
             }
         });
+    }
+
+    private void sendToLogin(){
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     ViewPager.OnPageChangeListener pageChangeListener = new ViewPager.OnPageChangeListener() {

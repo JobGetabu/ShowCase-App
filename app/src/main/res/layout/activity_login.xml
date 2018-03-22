@@ -23,7 +23,7 @@
         android:textSize="24sp" />
 
     <EditText
-        android:id="@+id/text_email"
+        android:id="@+id/login_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/header"
@@ -47,7 +47,7 @@
         android:id="@+id/text_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/text_email"
+        android:layout_below="@+id/login_email"
         android:layout_centerHorizontal="true"
         android:layout_marginEnd="35dp"
         android:layout_marginStart="35dp"
