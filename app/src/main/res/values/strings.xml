@@ -6,4 +6,9 @@
     <string name="profile">Profile</string>
     <string name="all_users">All Users</string>
     <string name="notifications">Notifications</string>
+    <string name="welcome_to_showcase_n_get_friends_and_notifications">Welcome to ShowCase   Get Friends and Notifications</string>
+    <string name="email">Email...</string>
+    <string name="password">Password...</string>
+    <string name="login_to_my_account">Login to my account</string>
+    <string name="don_t_have_an_account">Don\'t have an account ?</string>
 </resources>

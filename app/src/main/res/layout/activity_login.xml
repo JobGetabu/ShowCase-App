@@ -1,9 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg_background"
     tools:context="com.job.showcase.userManagement.LoginActivity">
 
-</android.support.constraint.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="118dp"
+        android:fontFamily="@font/nunito_semibold"
+        android:text="@string/welcome_to_showcase_n_get_friends_and_notifications"
+        android:textAlignment="center"
+        android:layout_marginBottom="50dp"
+        android:textColor="@color/textTabBright"
+        android:textSize="24sp" />
+
+    <EditText
+        android:id="@+id/text_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/header"
+        android:layout_marginEnd="35dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/input_background"
+        android:ems="10"
+        android:fontFamily="@font/nunito_semibold"
+        android:hint="@string/email"
+        android:inputType="textEmailAddress"
+        android:paddingBottom="8dp"
+        android:paddingEnd="20dp"
+        android:paddingStart="20dp"
+        android:paddingTop="8dp"
+        android:textColorHighlight="@color/textTabBright"
+        android:textColorLink="@color/textTabBlue"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/text_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text_email"
+        android:layout_centerHorizontal="true"
+        android:layout_marginEnd="35dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/input_background"
+        android:ems="10"
+        android:fontFamily="@font/nunito_semibold"
+        android:hint="@string/password"
+        android:inputType="textPassword"
+        android:paddingBottom="8dp"
+        android:paddingEnd="20dp"
+        android:paddingStart="20dp"
+        android:paddingTop="8dp"
+        android:textColorHighlight="@color/textTabBright"
+        android:textColorLink="@color/textTabBlue"
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/button_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text_password"
+        android:layout_centerHorizontal="true"
+        android:layout_marginEnd="35dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/input_background"
+        android:fontFamily="@font/nunito_semibold"
+        android:paddingBottom="8dp"
+        android:paddingTop="8dp"
+        android:text="@string/login_to_my_account"
+        android:textColor="@color/colorAccent"
+        android:textAllCaps="false"
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/button_register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button_login"
+        android:layout_marginEnd="35dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/button_border"
+        android:fontFamily="@font/nunito_semibold"
+        android:paddingBottom="8dp"
+        android:paddingTop="8dp"
+        android:text="@string/don_t_have_an_account"
+        android:textColor="@color/textTabBright"
+        android:textAllCaps="false"
+        android:textSize="14sp" />
+</RelativeLayout>

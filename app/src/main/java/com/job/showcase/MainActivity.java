@@ -1,5 +1,6 @@
 package com.job.showcase;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.job.showcase.adapter.PagerViewAdapter;
+import com.job.showcase.userManagement.LoginActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -31,6 +33,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         ButterKnife.bind(this);
+
+        //TODO remove this intent
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
 
         pagerViewAdapter = new PagerViewAdapter(getSupportFragmentManager());
         mViewPager.setAdapter(pagerViewAdapter);
