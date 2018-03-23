@@ -12,11 +12,12 @@
         android:background="@drawable/fragment_background"
         android:layout_margin="15dp">
 
-        <TextView
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/frg_users_recyclerview"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="20dp"
-            android:text="@string/hello_blank_fragment" />
+            android:layout_height="match_parent">
+
+        </android.support.v7.widget.RecyclerView>
 
     </RelativeLayout>
 

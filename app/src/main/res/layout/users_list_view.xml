@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="8dp">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/user_list_profileimage"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="21dp"
+        android:src="@drawable/profile_placeholder"
+        app:civ_border_color="@android:color/white"
+        app:civ_border_width="2dp"
+        app:srcCompat="@drawable/profile_placeholder" />
+
+    <TextView
+        android:id="@+id/user_list_profile_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/user_list_profileimage"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="20dp"
+        android:layout_toEndOf="@+id/user_list_profileimage"
+        android:fontFamily="@font/nunito_semibold"
+        android:paddingEnd="8dp"
+        android:paddingStart="8dp"
+        android:text="@string/username"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/user_list_notificationtxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/user_list_profile_name"
+        android:layout_below="@+id/user_list_profile_name"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/nunito_semibold"
+        android:paddingStart="8dp"
+        android:text="" />
+</RelativeLayout>
