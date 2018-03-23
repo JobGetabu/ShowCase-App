@@ -13,7 +13,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -127,7 +126,7 @@ public class RegisterActivity extends AppCompatActivity {
                                             .addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
                                                 @Override
                                                 public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> uploadtask) {
-                                                    if (uploadtask.isComplete()) {
+                                                    if (uploadtask.isSuccessful()) {
 
                                                         String download_url = uploadtask.getResult().getDownloadUrl().toString();
 
@@ -141,15 +140,7 @@ public class RegisterActivity extends AppCompatActivity {
                                                                     public void onSuccess(Void aVoid) {
                                                                         sendToMain();
                                                                     }
-                                                                }).addOnFailureListener(new OnFailureListener() {
-
-                                                            @Override
-                                                            public void onFailure(@NonNull Exception e) {
-                                                                Toast.makeText(RegisterActivity.this,
-                                                                        "Database Error " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                                                                progressBar.setVisibility(View.INVISIBLE);
-                                                            }
-                                                        });
+                                                                });
 
                                                     } else {
                                                         Toast.makeText(RegisterActivity.this,
