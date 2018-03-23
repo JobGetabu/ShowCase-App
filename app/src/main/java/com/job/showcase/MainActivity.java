@@ -51,6 +51,8 @@ public class MainActivity extends AppCompatActivity {
         mViewPager.setAdapter(pagerViewAdapter);
 
         mViewPager.addOnPageChangeListener(pageChangeListener);
+        //caching of offscreenpages
+        mViewPager.setOffscreenPageLimit(2);
 
         tv_profile.setOnClickListener(new View.OnClickListener() {
             @Override

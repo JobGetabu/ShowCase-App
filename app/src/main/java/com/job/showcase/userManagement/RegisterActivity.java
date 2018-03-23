@@ -12,6 +12,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -86,8 +87,10 @@ public class RegisterActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == PICK_IMAGE) {
-            imageUri = data.getData();
-            profileImgbtn.setImageURI(imageUri);
+            if (data != null){
+                imageUri = data.getData();
+                Glide.with(this).load(imageUri).into(profileImgbtn);
+            }
         }
     }
 
