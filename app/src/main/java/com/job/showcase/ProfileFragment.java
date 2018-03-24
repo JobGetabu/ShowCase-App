@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -17,6 +18,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.job.showcase.userManagement.LoginActivity;
+
+import java.util.HashMap;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -33,6 +36,8 @@ public class ProfileFragment extends Fragment {
     CircleImageView profileFrgPic;
     @BindView(R.id.frg_profile_name)
     TextView profileFrgName;
+    @BindView(R.id.frg_profile_progressBar)
+    ProgressBar progressBar;
 
     private View mRootView;
     private FirebaseAuth mAuth;
@@ -86,8 +91,22 @@ public class ProfileFragment extends Fragment {
 
     @OnClick(R.id.profilebtn_logout)
     public void userLogout(){
-        mAuth.signOut();
-        Intent intent = new Intent(mRootView.getContext(), LoginActivity.class);
-        startActivity(intent);
+        progressBar.setVisibility(View.VISIBLE);
+        String user_id = mAuth.getCurrentUser().getUid();
+        HashMap tokenHash = new HashMap();
+        tokenHash.put("token_id","");
+
+        mFirestore.collection("Users").document(user_id).update(tokenHash)
+                .addOnSuccessListener(new OnSuccessListener() {
+                    @Override
+                    public void onSuccess(Object o) {
+                        progressBar.setVisibility(View.INVISIBLE);
+                        mAuth.signOut();
+                        Intent intent = new Intent(mRootView.getContext(), LoginActivity.class);
+                        startActivity(intent);
+
+                    }
+                });
+
     }
 }

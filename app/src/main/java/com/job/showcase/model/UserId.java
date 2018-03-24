@@ -13,5 +13,4 @@ public class UserId {
         this.userId = userId;
         return (T) this;
     }
-
 }

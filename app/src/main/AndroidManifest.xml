@@ -17,7 +17,29 @@
             </intent-filter>
         </activity>
         <activity android:name=".userManagement.LoginActivity" />
-        <activity android:name=".userManagement.RegisterActivity"></activity>
+        <activity
+            android:name=".userManagement.RegisterActivity"
+            android:parentActivityName=".userManagement.LoginActivity">
+        </activity>
+        <activity android:name=".SendActivity" />
+
+        <service android:name=".MyFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_channel_id"
+            android:value="@string/default_notification_channel_id" />
+
+        <activity android:name=".NotificationReceiverActivity"
+            android:parentActivityName=".MainActivity">
+            <intent-filter>
+                <action android:name="com.job.showcase.FIREBASENOTIFICATION"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

@@ -19,6 +19,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -132,10 +133,13 @@ public class RegisterActivity extends AppCompatActivity {
                                                     if (uploadtask.isSuccessful()) {
 
                                                         String download_url = uploadtask.getResult().getDownloadUrl().toString();
+                                                        String token_id = FirebaseInstanceId.getInstance().getToken();
+
 
                                                         HashMap<String, Object> hashMap = new HashMap<>();
                                                         hashMap.put("name", name);
                                                         hashMap.put("imageurl", download_url);
+                                                        hashMap.put("token_id",token_id);
 
                                                         mFirestore.collection("Users").document(user_id).set(hashMap)
                                                                 .addOnSuccessListener(new OnSuccessListener<Void>() {

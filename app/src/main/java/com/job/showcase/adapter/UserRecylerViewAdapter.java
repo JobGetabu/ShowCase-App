@@ -1,6 +1,7 @@
 package com.job.showcase.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.job.showcase.R;
+import com.job.showcase.SendActivity;
 import com.job.showcase.model.Users;
 
 import java.util.List;
@@ -51,6 +53,21 @@ public class UserRecylerViewAdapter extends RecyclerView.Adapter<UserRecylerView
                 .setDefaultRequestOptions(new RequestOptions().placeholder(R.drawable.profile_placeholder))
                 .load(usersList.get(position).getImageurl())
                 .into(holder.userListProfileImage);
+
+        final String user_id = usersList.get(position).userId;
+        final String user_name = usersList.get(position).getName();
+
+        holder.mView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(context, SendActivity.class);
+                intent.putExtra("user_id",user_id);
+                intent.putExtra("user_name",user_name);
+                context.startActivity(intent);
+
+            }
+        });
     }
 
     @Override
@@ -60,6 +77,7 @@ public class UserRecylerViewAdapter extends RecyclerView.Adapter<UserRecylerView
 
     public class UserViewHolder extends RecyclerView.ViewHolder {
 
+        public View mView;
         @BindView(R.id.user_list_profile_name)
         TextView userListProfileName;
         @BindView(R.id.user_list_notificationtxt)
@@ -70,8 +88,8 @@ public class UserRecylerViewAdapter extends RecyclerView.Adapter<UserRecylerView
 
         public UserViewHolder(View itemView) {
             super(itemView);
-
-            ButterKnife.bind(this,itemView);
+            mView = itemView;
+            ButterKnife.bind(this, mView);
         }
     }
 }

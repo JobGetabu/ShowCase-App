@@ -11,12 +11,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.job.showcase.MainActivity;
 import com.job.showcase.R;
+
+import java.util.HashMap;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -36,6 +41,7 @@ public class LoginActivity extends AppCompatActivity {
     ProgressBar progressBar;
 
     FirebaseAuth mAuth;
+    FirebaseFirestore mFirebaseFirestore;
 
     @Override
     protected void onStart() {
@@ -61,6 +67,7 @@ public class LoginActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         mAuth = FirebaseAuth.getInstance();
+        mFirebaseFirestore = FirebaseFirestore.getInstance();
     }
     @OnClick(R.id.button_register)
     public void sendToRegister(){
@@ -81,8 +88,22 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> logintask) {
                         if (logintask.isSuccessful()){
-                            progressBar.setVisibility(View.INVISIBLE);
-                            sendToMain();
+
+                            String token_id = FirebaseInstanceId.getInstance().getToken();
+                            String user_id = mAuth.getCurrentUser().getUid();
+
+                            HashMap tokenHash = new HashMap();
+                            tokenHash.put("token_id",token_id);
+
+                            mFirebaseFirestore.collection("Users").document(user_id).update(tokenHash)
+                                    .addOnSuccessListener(new OnSuccessListener() {
+                                        @Override
+                                        public void onSuccess(Object o) {
+                                            progressBar.setVisibility(View.INVISIBLE);
+                                            sendToMain();
+                                        }
+                                    });
+
                         }else {
                             //Custom error handling
                             Toast.makeText(LoginActivity.this,

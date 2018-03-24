@@ -15,4 +15,6 @@
     <string name="back_to_login">Back to Login</string>
     <string name="logout_of_this_account">Logout of this Account</string>
     <string name="username">Username</string>
+    <string name="enter_notification_to_send"> Enter message to send…</string>
+    <string name="default_notification_channel_id">SHOW_CASE_FRIENDS_1</string>
 </resources>

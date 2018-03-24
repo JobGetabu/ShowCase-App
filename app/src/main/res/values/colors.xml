@@ -7,4 +7,7 @@
     <color name="textTabBright">#ffffff</color>
     <color name="textTabLight">#ffb08b</color>
     <color name="textTabBlue">#22133e</color>
+
+    <color name="inputGrey">#cccccc</color>
+    <color name="whitesmoke">#eeeeed</color>
 </resources>

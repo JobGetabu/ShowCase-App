@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/whitesmoke"
+    tools:context="com.job.showcase.SendActivity">
+
+    <EditText
+        android:id="@+id/send_notification_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="35dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="128dp"
+        android:background="@drawable/input_lp_background"
+        android:ems="10"
+        android:fontFamily="@font/nunito_semibold"
+        android:hint="@string/enter_notification_to_send"
+        android:inputType="textEmailAddress"
+        android:paddingBottom="12dp"
+        android:paddingEnd="20dp"
+        android:paddingStart="20dp"
+        android:paddingTop="12dp"
+        android:textColorHighlight="@color/textTabBright"
+        android:textColorLink="@color/whitesmoke"
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/send_notification_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/send_notification_text"
+        android:layout_centerHorizontal="true"
+        android:layout_marginEnd="35dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/primary_color_btn_bg"
+        android:fontFamily="@font/nunito_semibold"
+        android:paddingBottom="8dp"
+        android:paddingTop="8dp"
+        android:text="Send"
+        android:textAllCaps="false"
+        android:textColor="@color/whitesmoke"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/send_notification_sendto_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/send_notification_button"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="65dp"
+        android:fontFamily="@font/nunito_semibold"
+        android:text="Send to..."
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+        android:textSize="16sp" />
+
+    <ProgressBar
+        android:id="@+id/send_notification_progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:indeterminate="true"
+        android:visibility="invisible"
+        android:layout_centerHorizontal="true" />
+</RelativeLayout>

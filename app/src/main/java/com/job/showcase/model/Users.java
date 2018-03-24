@@ -4,7 +4,7 @@ package com.job.showcase.model;
  * Created by Job on Friday : 3/23/2018.
  */
 
-public class Users {
+public class Users extends UserId{
     private String name;
     private String imageurl;
 

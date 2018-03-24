@@ -62,7 +62,7 @@ public class UsersFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-
+        usersList.clear();
         mFirestore.collection("Users")
                 .addSnapshotListener( getActivity(), new EventListener<QuerySnapshot>() {
                     @Override
@@ -72,7 +72,8 @@ public class UsersFragment extends Fragment {
 
                            if (documentChange.getType() == DocumentChange.Type.ADDED){
 
-                               Users users = documentChange.getDocument().toObject(Users.class);
+                               String user_id = documentChange.getDocument().getId();
+                               Users users = documentChange.getDocument().toObject(Users.class).withId(user_id);
                                usersList.add(users);
 
                                userRecylerViewAdapter.notifyDataSetChanged();
